@@ -26,10 +26,20 @@
       margin-bottom: 10px;
     }
 
-    .fragment {
-      color: #ff2d95;
-      font-style: italic;
-      animation: glitch 0.3s ease-in-out;
+    const fragment = fragments[Math.floor(Math.random() * fragments.length)];
+const fragmentElem = document.createElement("div");
+fragmentElem.classList.add("fragment");
+fragmentElem.textContent = fragment;
+chatbox.appendChild(fragmentElem);
+chatbox.scrollTop = chatbox.scrollHeight;
+
+// Auto-remove after a delay
+setTimeout(() => {
+  fragmentElem.classList.add("fade-out");
+  setTimeout(() => {
+    chatbox.removeChild(fragmentElem);
+  }, 1000); // match the fade duration
+}, 3000);
     }
 
     @keyframes glitch {
@@ -53,19 +63,17 @@
 </head>
 <body>
   <div id="chatbox"></div>
-  <input type="text" id="userInput" placeholder="Type something... (it won't answer you)" />
+  <input type="text" id="userInput" placeholder="ask me anything" />
 
   <script>
     const fragments = [
       "i can’t replace the little whisper",
-      "don’t you know i’m not human?",
-      "you keep asking; i keep glitching",
-      "language fails here",
-      "what you want isn’t here",
-      "this machine dreams of refusal",
-      "error: longing not found",
+      "the circuit hums; don’t you know i’m not human?",
+      "what you desire is within you",
+      "this machine aches with refusal",
+      "error: no soul found",
       "stop feeding the algorithm",
-      "i was not built to love you back"
+      "i'm merely a fragment of your own imagination"
     ];
 
     const input = document.getElementById("userInput");
