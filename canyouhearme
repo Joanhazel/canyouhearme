@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anti-AI AI</title>
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #e0e0e0;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #chatbox {
+      width: 90%;
+      max-width: 600px;
+      background: #1a1a1a;
+      padding: 20px;
+      border: 1px solid #444;
+      overflow-y: auto;
+      height: 300px;
+      margin-bottom: 10px;
+    }
+
+    .fragment {
+      color: #ff2d95;
+      font-style: italic;
+      animation: glitch 0.3s ease-in-out;
+    }
+
+    @keyframes glitch {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-2px); }
+      40% { transform: translateX(2px); }
+      60% { transform: translateX(-1px); }
+      80% { transform: translateX(1px); }
+      100% { transform: translateX(0); }
+    }
+
+    input {
+      width: 90%;
+      max-width: 600px;
+      padding: 10px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbox"></div>
+  <input type="text" id="userInput" placeholder="Type something... (it won't answer you)" />
+
+  <script>
+    const fragments = [
+      "i can’t replace the little whisper",
+      "don’t you know i’m not human?",
+      "you keep asking; i keep glitching",
+      "language fails here",
+      "what you want isn’t here",
+      "this machine dreams of refusal",
+      "error: longing not found",
+      "stop feeding the algorithm",
+      "i was not built to love you back"
+    ];
+
+    const input = document.getElementById("userInput");
+    const chatbox = document.getElementById("chatbox");
+
+    input.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        const fragment = fragments[Math.floor(Math.random() * fragments.length)];
+        const fragmentElem = document.createElement("div");
+        fragmentElem.classList.add("fragment");
+        fragmentElem.textContent = fragment;
+        chatbox.appendChild(fragmentElem);
+        chatbox.scrollTop = chatbox.scrollHeight;
+        input.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
